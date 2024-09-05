@@ -1,12 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Hello, world! I am testing again</title>
+  <title>Hello, Map!</title>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="description" content="" />
+
+  <link rel="stylesheet" href="https://js.arcgis.com/4.25/esri/themes/light/main.css">
+  <script src="https://js.arcgis.com/4.25/"></script>
+
+  <script>  
+    require(["esri/config", "esri/Map", "esri/views/MapView"], function(esriConfig, Map, MapView) {   
+      esriConfig.apiKey = "AAPTxy8BH1VEsoebNVZXo8HurO1yiQQh2vI3Qn8Db6q-7q35-Hk6vmdl5LFx-iA8OfHSU083M58vpz1yRZeQQZeqQmYGXdTzpT_24fl_YaBfJ-tYqsDxkRgzFKvsv4XgvIB4pYRUb_EkS4dEQkWmTFcuBSmtR-P2UpGrC5478_E_JCDYCTRWOb76bqI4Dg0oAvd684JjoeRyt62VKzMjk5QbabKBzwJEnxY2YmH6mu-oDo2v31QhX3vBETudp5KAvLo4AT1_u49WXajV";
+      const map = new Map({ 
+        basemap: "arcgis-topographic" // Basemap layer service 
+      });
+      const view = new MapView({
+        map: map,
+        center: [-97.393959, 41.999186], // Longitude, latitude
+        zoom: 13, // Zoom level
+        container: "viewDiv" // Div element
+      });
+    });  
+  </script>
+
+  <style>  
+    html,  
+    body,  
+    #viewDiv {  
+      padding: 0;  
+      margin: 0;  
+      height: 100%;  
+      width: 100%;  
+    }  
+  </style> 
+
 </head>
 <body>
-  <h1>Hello, world! I am testing again</h1>
+  <div id="viewDiv"></div> 
 </body>
 </html>
