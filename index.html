@@ -31,27 +31,34 @@
         zoom: 16
       });
 
-      // Create and add the BasemapGallery widget
       let basemapGallery = new BasemapGallery({
         view: view
       });
 
       view.ui.add(basemapGallery, {
-        position: "top-right"
+        position: "bottom-left"
       });
       
-      // Create and add the Locate widget
       let locate = new Locate({
         view: view
       });
 
       view.ui.add(locate, {
-        position: "bottom-right", // Position the widget in the bottom-right corner
-        index: 0 // Optional: Index defines the order of the widget in the view's UI
+        position: "bottom-right", 
+        index: 0 
       });
       
       // Log to confirm widgets creation
       console.log("BasemapGallery and Locate widgets added.");
+
+      const searchWidget = new Search({
+        view: view
+      });
+
+      view.ui.add(searchWidget, {
+        position: "top-right",
+        index: 2
+      });
     });
   </script>
 
