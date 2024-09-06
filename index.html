@@ -10,7 +10,13 @@
   <script src="https://js.arcgis.com/4.25/"></script>
 
   <script>  
-    require(["esri/config", "esri/Map", "esri/views/MapView", "esri/layers/FeatureLayer"], function(esriConfig, Map, MapView, FeatureLayer) {   
+    require([
+      "esri/config", 
+      "esri/Map", 
+      "esri/views/MapView", 
+      "esri/layers/FeatureLayer",
+      "esri/widgets/BasemapGallery"  // Import BasemapGallery
+    ], function(esriConfig, Map, MapView, FeatureLayer, BasemapGallery) {   
       esriConfig.apiKey = "AAPTxy8BH1VEsoebNVZXo8HurO1yiQQh2vI3Qn8Db6q-7q35-Hk6vmdl5LFx-iA8OfHSU083M58vpz1yRZeQQZeqQmYGXdTzpT_24fl_YaBfJ-tYqsDxkRgzFKvsv4XgvIB4pYRUb_EkS4dEQkWmTFcuBSmtR-P2UpGrC5478_E_JCDYCTRWOb76bqI4Dg0oAvd684JjoeRyt62VKzMjk5QbabKBzwJEnxY2YmH6mu-oDo2v31QhX3vBETudp5KAvLo4AT1_u49WXajV";
       
       const map = new Map({ 
@@ -24,9 +30,12 @@
         container: "viewDiv" // Div element
       });
 
+      // Create and add the BasemapGallery widget
       let basemapGallery = new BasemapGallery({
         view: view
       });
+      
+      // Add widget to the top right corner of the view
       view.ui.add(basemapGallery, {
         position: "top-right"
       });
@@ -49,3 +58,4 @@
   <div id="viewDiv"></div> 
 </body>
 </html>
+
