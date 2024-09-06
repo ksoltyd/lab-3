@@ -30,6 +30,14 @@
       });
 
       map.add(riverLayer);
+
+      let basemapGallery = new BasemapGallery({
+        view: view
+      });
+// Add widget to the top right corner of the view
+      view.ui.add(basemapGallery, {
+        position: "top-right"
+      });
     });  
   </script>
 
