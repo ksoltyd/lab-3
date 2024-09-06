@@ -9,53 +9,62 @@
   <link rel="stylesheet" href="https://js.arcgis.com/4.25/esri/themes/light/main.css">
   <script src="https://js.arcgis.com/4.25/"></script>
 
-  <script>  
-    require(["esri/config", "esri/Map", "esri/views/MapView", "esri/layers/FeatureLayer"], function(esriConfig, Map, MapView, FeatureLayer) {   
-      esriConfig.apiKey = "AAPTxy8BH1VEsoebNVZXo8HurO1yiQQh2vI3Qn8Db6q-7q35-Hk6vmdl5LFx-iA8OfHSU083M58vpz1yRZeQQZeqQmYGXdTzpT_24fl_YaBfJ-tYqsDxkRgzFKvsv4XgvIB4pYRUb_EkS4dEQkWmTFcuBSmtR-P2UpGrC5478_E_JCDYCTRWOb76bqI4Dg0oAvd684JjoeRyt62VKzMjk5QbabKBzwJEnxY2YmH6mu-oDo2v31QhX3vBETudp5KAvLo4AT1_u49WXajV";
+  <script>
+    require([
+      "esri/config",
+      "esri/Map",
+      "esri/views/MapView",
+      "esri/layers/FeatureLayer",
+      "esri/widgets/BasemapGallery",
+      "esri/widgets/Locate"
+    ], function(esriConfig, Map, MapView, FeatureLayer, BasemapGallery, Locate) {
+      esriConfig.apiKey = "YOUR_API_KEY_HERE"; // Replace with your API key
       
-      const map = new Map({ 
-        basemap: "arcgis-topographic" // Basemap layer service 
+      const map = new Map({
+        basemap: "arcgis-topographic"
       });
-      
+
       const view = new MapView({
+        container: "viewDiv",
         map: map,
-        center: [-89.469429, 41.993124], // Longitude, latitude
-        zoom: 16, // Zoom level
-        container: "viewDiv" // Div element
+        center: [-89.469429, 41.993124],
+        zoom: 16
       });
 
-      // Add a layer for rivers
-      const riverLayer = new FeatureLayer({
-        url: 'https://services.arcgis.com/your-service-url/FeatureServer/0' // Replace with actual URL for river layer
-      });
-
-      map.add(riverLayer);
-
+      // Create and add the BasemapGallery widget
       let basemapGallery = new BasemapGallery({
         view: view
       });
-// Add widget to the top right corner of the view
+
       view.ui.add(basemapGallery, {
         position: "top-right"
       });
-    });  
+      
+      // Create and add the Locate widget
+      let locate = new Locate({
+        view: view
+      });
+
+      view.ui.add(locate, {
+        position: "bottom-right", // Position the widget in the bottom-right corner
+        index: 0 // Optional: Index defines the order of the widget in the view's UI
+      });
+      
+      // Log to confirm widgets creation
+      console.log("BasemapGallery and Locate widgets added.");
+    });
   </script>
 
-  <style>  
-    html,  
-    body,  
-    #viewDiv {  
-      padding: 0;  
-      margin: 0;  
-      height: 100%;  
-      width: 100%;  
-    }  
-  </style> 
-
+  <style>
+    html, body, #viewDiv {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      width: 100%;
+    }
+  </style>
 </head>
 <body>
-  <div id="viewDiv"></div> 
+  <div id="viewDiv"></div>
 </body>
 </html>
-
-
