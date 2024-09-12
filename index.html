@@ -74,6 +74,36 @@
 
       graphicsLayer.add(pointGraphic);
 
+      const graphicsLayer = new GraphicsLayer();
+      map.add(graphicsLayer);
+
+      // Define polyline geometry
+      const polyline = {
+        type: "polyline",
+        paths: [
+          [-89.482036, 41.997238],  // Start point
+          [-89.473088, 41.998067],
+          [-89.470363, 41.998195],
+          [-89.466586, 41.997956],
+          [-89.458089, 41.996775]   // End point
+        ]
+      };
+
+     
+      const polylineSymbol = {
+        type: "simple-line",  
+        color: "white", 
+        width: 2
+      };
+
+
+      const polylineGraphic = new Graphic({
+        geometry: polyline,
+        symbol: polylineSymbol
+      });
+
+      graphicsLayer.add(polylineGraphic);
+
       let basemapGallery = new BasemapGallery({
         view: view
       });
