@@ -17,15 +17,22 @@
       "esri/Graphic",  
       "esri/layers/GraphicsLayer", 
       "esri/layers/FeatureLayer",
+      "esri/layers/WebTileLayer",
       "esri/widgets/BasemapGallery",
       "esri/widgets/Locate",
       "esri/widgets/Search",
       "esri/Basemap"
-    ], function(esriConfig, Map, MapView, Graphic, GraphicsLayer, FeatureLayer, BasemapGallery, Locate, Search, Basemap) {
+    ], function(esriConfig, Map, MapView, Graphic, GraphicsLayer, FeatureLayer, WebTileLayer, BasemapGallery, Locate, Search, Basemap) {
       esriConfig.apiKey = "AAPTxy8BH1VEsoebNVZXo8HurO1yiQQh2vI3Qn8Db6q-7q35-Hk6vmdl5LFx-iA8OfHSzZWBPs9euPbIhU5mwGtGu2wHKcRhyRWhGF44mIJ_lf_SrxboCfkH2WJqMHNpKZT3GVEnXbMPbSXoCcWqZpu_ZfdMM9i27ua5v7c7xozIIBKWAZM105ZvIe0ebxu0uH_sOcseVuR5TdvN6Kh3KPkDc28Vj4ZcaSnqOAJuVTOXXfvUPrSXS7YeGqlkcCYMf1lrAT1_u49WXajV"; 
       
+      const outdoorBasemapUrl = "https://basemaps.arcgis.com/arcgis/rest/services/World_Basemap_v2/VectorTileServer";
+
       const map = new Map({
-        basemap: "arcgis-outdoor" // Use predefined basemap name
+        basemap: {
+          baseLayers: [new WebTileLayer({
+            urlTemplate: outdoorBasemapUrl
+          })]
+        }
       });
 
       const view = new MapView({
