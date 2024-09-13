@@ -139,11 +139,11 @@
 
       graphicsLayer.add(polygonGraphic);
 
-      const RiverLayer = new FeatureLayer({
+      const riverLayer = new FeatureLayer({
         url: "https://services.arcgis.com/P3ePLMYs2RVChkJx/arcgis/rest/services/NHDPlus_High_Resolution_9March2023_view/FeatureServer"
       });
-      
-      map.add(RiverLayer);
+
+      map.add(riverLayer);
 
       let basemapGallery = new BasemapGallery({
         view: view
