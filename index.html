@@ -120,9 +120,21 @@
         }
       };
 
+      const popupTemplatePolygon = {
+        title: "{Name}",
+        content: "{Description}"
+      };
+
+      const attributesPolygon = {
+        Name: "Restoration Prairie",
+        Description: "An area of native prairie plants and grasses."
+      };
+
       const polygonGraphic = new Graphic({
         geometry: polygon,
         symbol: polygonSymbol
+        attributes: attributesPolygon,
+        popupTemplate: popupTemplatePolygon
       });
 
       graphicsLayer.add(polygonGraphic);
