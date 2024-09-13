@@ -141,18 +141,9 @@
 
       const riverLayer = new FeatureLayer({
         url: "https://utility.arcgis.com/usrsvcs/servers/45e087308b4c45f592b60c135ee3b3e7/rest/services/USA_NHD_HighRes/MapServer"
-    });
+      });
 
       map.add(riverLayer);
-
-      // Check if the layer is loaded
-      riverLayer.watch("loaded", function() {
-        console.log("FeatureLayer is loaded");
-      });
-
-      riverLayer.watch("loadError", function(error) {
-        console.error("Error loading FeatureLayer: ", error);
-      });
 
       let basemapGallery = new BasemapGallery({
         view: view
