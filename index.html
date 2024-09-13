@@ -74,7 +74,6 @@
 
       graphicsLayer.add(pointGraphic);
 
-      // Define polyline geometry
       const polyline = {
         type: "polyline",
         paths: [
@@ -86,13 +85,11 @@
         ]
       };
 
-     
       const polylineSymbol = {
         type: "simple-line",  
         color: "white", 
         width: 2
       };
-
 
       const polylineGraphic = new Graphic({
         geometry: polyline,
@@ -100,6 +97,35 @@
       });
 
       graphicsLayer.add(polylineGraphic);
+
+      const polygon = {
+        type: "polygon",
+        rings: [
+          [-89.471800, 41.996504], // Start point
+          [-89.471264, 41.996169],
+          [-89.471521, 41.995500],
+          [-89.472959, 41.995356],
+          [-89.472980, 41.996217],
+          [-89.472165, 41.996217],
+          [-89.471800, 41.996504], // End point, same as start point to close the polygon
+        ]
+      };
+
+      const polygonSymbol = {
+        type: "simple-fill",
+        color: [227, 139, 79, 0.8], // Fill color with opacity
+        outline: {
+          color: [255, 255, 255],
+          width: 1
+        }
+      };
+
+      const polygonGraphic = new Graphic({
+        geometry: polygon,
+        symbol: polygonSymbol
+      });
+
+      graphicsLayer.add(polygonGraphic);
 
       let basemapGallery = new BasemapGallery({
         view: view
