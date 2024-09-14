@@ -165,7 +165,7 @@
       // Second FeatureLayer
       const popupAero = {
         title: "Airports",
-        content: "<b>Name:</b> {Fac_Name}<b>City:</b> {City}"
+        content: "<b>Name:</b> {Fac_Name}<br><b>City:</b> {City}"
       };
 
       const AeroRenderer = {
@@ -176,13 +176,13 @@
           "width": "18px",
           "height": "18px"
         }
-      }
-      
+      };
+
       const featureLayerUrl2 = "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/US_Airports_lab2_kbsoltys/FeatureServer";
 
       const featureLayer2 = new FeatureLayer({
         url: featureLayerUrl2,
-        renderer: AeroRenderer
+        renderer: AeroRenderer,
         outFields: ["Fac_Name", "City"],
         popupTemplate: popupAero
       });
@@ -232,7 +232,7 @@
     #basemapGalleryContainer {
       width: 100px; 
       height: auto; 
-      background: "white"; 
+      background: white; 
       overflow: hidden;
     }
 
@@ -247,4 +247,3 @@
   <div id="basemapGalleryContainer"></div>
 </body>
 </html>
-
