@@ -142,10 +142,10 @@
       const popupStreams = {
         "title": "STREAMs",
         "content": "<b>USGS:</b> {USGS}<br>"
-      }
+      };
       
       const streamsLayer = new FeatureLayer({
-        url: "https://services1.arcgis.com/RKHOEYhbKFt1KpD3/arcgis/rest/services/Illinois_Streams/FeatureServer"
+        url: "https://services1.arcgis.com/RKHOEYhbKFt1KpD3/arcgis/rest/services/Illinois_Streams/FeatureServer",
         outFields: ["USGS"],
         popupTemplate: popupStreams
       });
