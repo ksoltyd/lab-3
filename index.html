@@ -163,9 +163,23 @@
       map.add(featureLayer1);
 
       // Second FeatureLayer
-      const popupAero = {
-        title: "Airports",
-        content: "<b>Name:</b> {Fac_Name}<br><b>City:</b> {City}"
+      const airportLabels = {
+        symbol: {
+          type: "text",
+          color: "#FFFFFF",
+          haloColor: "#5E8D74",
+          haloSize: "2px",
+          font: {
+            size: "12px",
+            family: "Noto Sans",
+            style: "italic",
+            weight: "normal"
+          }
+        },
+        labelPlacement: "above-center",
+        labelExpressionInfo: {
+          expression: "$feature.Fac_Name"
+        }
       };
 
       const AeroRenderer = {
@@ -183,8 +197,9 @@
       const featureLayer2 = new FeatureLayer({
         url: featureLayerUrl2,
         renderer: AeroRenderer,
-        outFields: ["Fac_Name", "City"],
-        popupTemplate: popupAero
+        definitionExpression: "Fac_Type = 'AIRPORT'",
+        definitionExpression: "Fac_Type = 'AIRPORT'", 
+        labelingInfo: [airportLabels] 
       });
 
       map.add(featureLayer2);
