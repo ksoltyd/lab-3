@@ -25,19 +25,20 @@
       esriConfig.apiKey = "AAPTxy8BH1VEsoebNVZXo8HurO1yiQQh2vI3Qn8Db6q-7q35-Hk6vmdl5LFx-iA8OfHSzZWBPs9euPbIhU5mwGtGu2wHKcRhyRWhGF44mIJ_lf_SrxboCfkH2WJqMHNpKZT3GVEnXbMPbSXoCcWqZpu_ZfdMM9i27ua5v7c7xozIIBKWAZM105ZvIe0ebxu0uH_sOcseVuR5TdvN6Kh3KPkDc28Vj4ZcaSnqOAJuVTOXXfvUPrSXS7YeGqlkcCYMf1lrAT1_u49WXajV";
       
       const map = new Map({
-        basemap: "arcgis-topographic"
+        basemap: "arcgis-topographic" // I moved it back to topographic after Lab 1 because it looks good
       });
 
       const view = new MapView({
         container: "viewDiv",
         map: map,
-        center: [-88.983187, 37.487660],
+        center: [-88.983187, 37.487660], // Designates the map center
         zoom: 10
       });
 
       const graphicsLayer = new GraphicsLayer();  
       map.add(graphicsLayer);
 
+      // Point
       const point = { 
         type: "point",  
         longitude: -89.220433,    
@@ -73,6 +74,7 @@
 
       graphicsLayer.add(pointGraphic);
 
+      // Polyline
       const polyline = {
         type: "polyline",
         paths: [
@@ -94,6 +96,7 @@
 
       graphicsLayer.add(polylineGraphic);
 
+      // Polygon
       const polygon = {
         type: "polygon",
         rings: [
@@ -107,7 +110,7 @@
           [-88.187546, 37.462606],
           [-88.194928, 37.461516],
           [-88.199734, 37.461516],
-          [-88.199219, 37.510008], // End point, same as start point to close the polygon
+          [-88.199219, 37.510008], // End point
         ]
       };
 
@@ -154,7 +157,7 @@
 
       const featureLayer1 = new FeatureLayer({
         url: featureLayerUrl1,
-        outFields: ["NAME", "ADDRESS", "CITY", "STATE"],
+        outFields: ["NAME", "ADDRESS", "CITY", "STATE"], // Address information is not very good in the table, but it is what it is
         popupTemplate: popupTH
       });
 
@@ -185,7 +188,7 @@
         field: "Fac_Type",
         uniqueValueInfos: [
           {
-            value: "AIRPORT",
+            value: "AIRPORT", // Separates the symbols for Airport
             symbol: {
               type: "picture-marker",
               url: "local_airport_24dp_5F6368.png",
@@ -195,7 +198,7 @@
             label: "Airport"
           },
           {
-            value: "HELIPORT",
+            value: "HELIPORT", // Separates the symbols for Heliport
             symbol: {
               type: "picture-marker",
               url: "arrow_circle_up_24dp_5F6368.png", 
@@ -306,7 +309,7 @@
       width: 100%;
     }
 
-    #basemapGalleryContainer { // Make the Basemap Smaller
+    #basemapGalleryContainer { 
       width: 100px; 
       height: auto; 
       background: white; 
