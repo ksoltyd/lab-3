@@ -151,7 +151,7 @@
       const featureLayerUrl = "https://services2.arcgis.com/FiaPA4ga0iQKduv3/arcgis/rest/services/Structures_Recreation_v1/FeatureServer";
 
       const featureLayer = new FeatureLayer({
-        url: featureLayerUrl
+        url: featureLayerUrl,
         outFields: ["NAME","ADDRESS","CITY","STATE"],
         popupTemplate: popupTH
       });
