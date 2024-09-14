@@ -39,10 +39,10 @@
       const graphicsLayer = new GraphicsLayer();  
       map.add(graphicsLayer);
 
-      const point = { //Create a point  
+      const point = { 
       type: "point",  
-      longitude: -88.937919,    
-      latitude: 37.612261
+      longitude: -89.218020,    
+      latitude: 37.715057
       };
 
       const simpleMarkerSymbol = {  
@@ -50,7 +50,7 @@
         style: "triangle", 
         color: "white",  
         outline: {  
-          color: [255, 255, 255], // White  
+          color: [255, 255, 255], 
           width: 0.75
         }  
       };
@@ -61,8 +61,8 @@
       };
 
       const attributes = {
-        Name: "Lake of Egypt",
-        Description: "49.4 miles from Cairo, IL."
+        Name: "Carbondale, IL",
+        Description: "Informally known as 'Little Egypt'"
       };
 
       const pointGraphic = new Graphic({  
@@ -77,11 +77,11 @@
       const polyline = {
         type: "polyline",
         paths: [
-          [-89.482036, 41.997238],  // Start point
+          [-89.482036, 41.997238],  
           [-89.473088, 41.998067],
           [-89.470363, 41.998195],
           [-89.466586, 41.997956],
-          [-89.458089, 41.996775]   // End point
+          [-89.458089, 41.996775]   
         ]
       };
 
@@ -101,13 +101,17 @@
       const polygon = {
         type: "polygon",
         rings: [
-          [-89.471800, 41.996504], // Start point
-          [-89.471264, 41.996169],
-          [-89.471521, 41.995500],
-          [-89.472959, 41.995356],
-          [-89.472980, 41.996217],
-          [-89.472165, 41.996217],
-          [-89.471800, 41.996504], // End point, same as start point to close the polygon
+          [-88.199219, 37.510008], // Start point
+          [-88.153557, 37.510218],
+          [-88.153386, 37.470372],
+          [-88.160081, 37.469827],
+          [-88.160081, 37.468465],
+          [-88.161969, 37.467375],
+          [-88.176732, 37.466012],
+          [-88.187546, 37.462606],
+          [-88.194928, 37.461516],
+          [-88.199734, 37.461516],
+          [-88.199219, 37.510008], // End point, same as start point to close the polygon
         ]
       };
 
@@ -126,8 +130,8 @@
       };
 
       const attributesPolygon = {
-        Name: "Restoration Prairie",
-        Description: "An area of native prairie plants and grasses."
+        Name: "Cave-in-Rock",
+        Description: "You'll never guess what this is."
       };
 
       const polygonGraphic = new Graphic({
