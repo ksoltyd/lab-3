@@ -126,12 +126,17 @@
 
       const popupTemplatePolygon = {
         title: "{Name}",
-        content: "{Description}"
+        content: `
+          <div>
+            <p><strong>Description:</strong> {Description}</p>
+            <img src="https://photos.thedyrt.com/photo/629878/media/illinois-cave-in-rock-state-park_810a2f8c-4737-4311-9b47-9e3daf505964.jpg?ixlib=rb-3.1.1&auto=webp&width=1972" alt="Feature Photo" class="popup-image"/>
+          </div>
+        `
       };
 
       const attributesPolygon = {
         Name: "Cave-in-Rock",
-        Description: "https://photos.thedyrt.com/photo/629878/media/illinois-cave-in-rock-state-park_810a2f8c-4737-4311-9b47-9e3daf505964.jpg?ixlib=rb-3.1.1&auto=webp&width=1972"
+        Description: "A notable landmark in Illinois."
       };
 
       const polygonGraphic = new Graphic({
