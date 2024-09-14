@@ -14,16 +14,14 @@
       "esri/config",
       "esri/Map",
       "esri/views/MapView",
-      "esri/Graphic",  
-      "esri/layers/GraphicsLayer", 
+      "esri/Graphic",
+      "esri/layers/GraphicsLayer",
       "esri/layers/FeatureLayer",
-      "esri/layers/WebTileLayer",
       "esri/widgets/BasemapGallery",
       "esri/widgets/Locate",
-      "esri/widgets/Search",
-      "esri/Basemap"
-    ], function(esriConfig, Map, MapView, Graphic, GraphicsLayer, FeatureLayer, WebTileLayer, BasemapGallery, Locate, Search, Basemap) {
-      esriConfig.apiKey = "AAPTxy8BH1VEsoebNVZXo8HurO1yiQQh2vI3Qn8Db6q-7q35-Hk6vmdl5LFx-iA8OfHSzZWBPs9euPbIhU5mwGtGu2wHKcRhyRWhGF44mIJ_lf_SrxboCfkH2WJqMHNpKZT3GVEnXbMPbSXoCcWqZpu_ZfdMM9i27ua5v7c7xozIIBKWAZM105ZvIe0ebxu0uH_sOcseVuR5TdvN6Kh3KPkDc28Vj4ZcaSnqOAJuVTOXXfvUPrSXS7YeGqlkcCYMf1lrAT1_u49WXajV"; 
+      "esri/widgets/Search"
+    ], function(esriConfig, Map, MapView, Graphic, GraphicsLayer, FeatureLayer, BasemapGallery, Locate, Search) {
+      esriConfig.apiKey = "AAPTxy8BH1VEsoebNVZXo8HurO1yiQQh2vI3Qn8Db6q-7q35-Hk6vmdl5LFx-iA8OfHSzZWBPs9euPbIhU5mwGtGu2wHKcRhyRWhGF44mIJ_lf_SrxboCfkH2WJqMHNpKZT3GVEnXbMPbSXoCcWqZpu_ZfdMM9i27ua5v7c7xozIIBKWAZM105ZvIe0ebxu0uH_sOcseVuR5TdvN6Kh3KPkDc28Vj4ZcaSnqOAJuVTOXXfvUPrSXS7YeGqlkcCYMf1lrAT1_u49WXajV";
       
       const map = new Map({
         basemap: "arcgis-topographic"
@@ -40,9 +38,9 @@
       map.add(graphicsLayer);
 
       const point = { 
-      type: "point",  
-      longitude: -89.220433,    
-      latitude: 37.722945
+        type: "point",  
+        longitude: -89.220433,    
+        latitude: 37.722945
       };
 
       const simpleMarkerSymbol = {  
@@ -148,37 +146,39 @@
 
       graphicsLayer.add(polygonGraphic);
 
+      // First FeatureLayer
       const popupTH = {
-        "title": "Trailheads",
-        "content": "<b>Name:</b> {NAME}<br><b>Address:</b> {ADDRESS} {CITY} {STATE}<br>"
+        title: "Trailheads",
+        content: "<b>Name:</b> {NAME}<br><b>Address:</b> {ADDRESS} {CITY} {STATE}<br>"
       };
 
-      const featureLayerUrl = "https://services2.arcgis.com/FiaPA4ga0iQKduv3/arcgis/rest/services/Structures_Recreation_v1/FeatureServer";
+      const featureLayerUrl1 = "https://services2.arcgis.com/FiaPA4ga0iQKduv3/arcgis/rest/services/Structures_Recreation_v1/FeatureServer";
 
-      const featureLayer = new FeatureLayer({
-        url: featureLayerUrl,
-        outFields: ["NAME","ADDRESS","CITY","STATE"],
+      const featureLayer1 = new FeatureLayer({
+        url: featureLayerUrl1,
+        outFields: ["NAME", "ADDRESS", "CITY", "STATE"],
         popupTemplate: popupTH
       });
 
-      map.add(featureLayer);
+      map.add(featureLayer1);
 
+      // Second FeatureLayer
       const popupAero = {
-        "title": "Airportss",
-        "content": "<b>Name:</b> {Fac_Name}"
+        title: "Airports",
+        content: "<b>Name:</b> {Fac_Name}"
       };
 
       const featureLayerUrl2 = "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/US_Airports_lab2_kbsoltys/FeatureServer";
 
-      const featureLayer = new FeatureLayer({
+      const featureLayer2 = new FeatureLayer({
         url: featureLayerUrl2,
         outFields: ["Fac_Name"],
         popupTemplate: popupAero
       });
 
-      map.add(featureLayer);
+      map.add(featureLayer2);
 
-
+      // Basemap Gallery Widget
       let basemapGallery = new BasemapGallery({
         view: view,
         container: 'basemapGalleryContainer'
@@ -188,6 +188,7 @@
         position: "bottom-left"
       });
       
+      // Locate Widget
       let locate = new Locate({
         view: view
       });
@@ -196,9 +197,8 @@
         position: "top-left", 
         index: 1 
       });
-      
-      console.log("BasemapGallery and Locate widgets added.");
 
+      // Search Widget
       const searchWidget = new Search({
         view: view
       });
@@ -222,7 +222,12 @@
       width: 100px; 
       height: auto; 
       background: white; 
-      overflow: hidden
+      overflow: hidden;
+    }
+
+    .popup-image {
+      max-width: 100%;
+      height: auto;
     }
   </style>
 </head>
@@ -231,3 +236,4 @@
   <div id="basemapGalleryContainer"></div>
 </body>
 </html>
+
