@@ -20,8 +20,9 @@
       "esri/widgets/BasemapGallery",
       "esri/widgets/Locate",
       "esri/widgets/Search",
-      "esri/widgets/Editor"
-    ], function(esriConfig, Map, MapView, Graphic, GraphicsLayer, FeatureLayer, BasemapGallery, Locate, Search, Editor) {
+      "esri/widgets/Editor",
+      "esri/widgets/Legend"
+    ], function(esriConfig, Map, MapView, Graphic, GraphicsLayer, FeatureLayer, BasemapGallery, Locate, Search, Editor, Legend) {
       esriConfig.apiKey = "AAPTxy8BH1VEsoebNVZXo8HurO1yiQQh2vI3Qn8Db6q-7q35-Hk6vmdl5LFx-iA8OfHSzZWBPs9euPbIhU5mwGtGu2wHKcRhyRWhGF44mIJ_lf_SrxboCfkH2WJqMHNpKZT3GVEnXbMPbSXoCcWqZpu_ZfdMM9i27ua5v7c7xozIIBKWAZM105ZvIe0ebxu0uH_sOcseVuR5TdvN6Kh3KPkDc28Vj4ZcaSnqOAJuVTOXXfvUPrSXS7YeGqlkcCYMf1lrAT1_u49WXajV";
       
       const map = new Map({
@@ -288,6 +289,12 @@
         position: "top-left", 
         index: 1 
       });
+
+      // Legend Widget
+      let legend = new Legend({
+        view: view
+      });
+      view.ui.add(legend, "bottom-right");
 
       // Search Widget
       const searchWidget = new Search({
