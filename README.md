@@ -1,2 +1,2 @@
-# lab2
-G 579 Lab 2
+# lab3
+G 579 Lab 3
