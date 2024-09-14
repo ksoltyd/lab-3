@@ -32,8 +32,8 @@
       const view = new MapView({
         container: "viewDiv",
         map: map,
-        center: [-89.471575, 41.993124],
-        zoom: 16
+        center: [-88.982358, 37.547789],
+        zoom: 12
       });
 
       const graphicsLayer = new GraphicsLayer();  
@@ -41,14 +41,14 @@
 
       const point = { //Create a point  
       type: "point",  
-      longitude: -89.464784,    
-      latitude: 41.995197
+      longitude: -88.937919,    
+      latitude: 37.612261
       };
 
       const simpleMarkerSymbol = {  
         type: "simple-marker", 
         style: "triangle", 
-        color: "white",  
+        color: "wblue",  
         outline: {  
           color: [255, 255, 255], // White  
           width: 0.75
@@ -61,8 +61,8 @@
       };
 
       const attributes = {
-        Name: "White Pines Lodge",
-        Description: "A lodge and cabins in the state park."
+        Name: "Lake of Egypt",
+        Description: "49.4 miles from Cairo, IL."
       };
 
       const pointGraphic = new Graphic({  
