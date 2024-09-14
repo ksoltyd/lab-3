@@ -139,18 +139,13 @@
 
       graphicsLayer.add(polygonGraphic);
 
-      const popupStreams = {
-        "title": "Streams",
-        "content": "<b>NAME:</b> {gnis_name}<br>"
-      };
-      
-      const streamsLayer = new FeatureLayer({
-        url: "https://services.arcgis.com/P3ePLMYs2RVChkJx/arcgis/rest/services/NHDPlus_High_Resolution_9March2023_view/FeatureServer",
-        outFields: ["gnis_name"],
-        popupTemplate: popupStreams
+      const featureLayerUrl = 'https://services.arcgis.com/P3ePLMYs2RVChkJx/arcgis/rest/services/NHDPlus_High_Resolution_9March2023_view/FeatureServer/0';
+
+      const featureLayer = new FeatureLayer({
+        url: featureLayerUrl
       });
-      
-      map.add(streamsLayer);
+
+      map.add(featureLayer);
 
       let basemapGallery = new BasemapGallery({
         view: view
