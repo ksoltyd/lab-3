@@ -19,8 +19,9 @@
       "esri/layers/FeatureLayer",
       "esri/widgets/BasemapGallery",
       "esri/widgets/Locate",
-      "esri/widgets/Search"
-    ], function(esriConfig, Map, MapView, Graphic, GraphicsLayer, FeatureLayer, BasemapGallery, Locate, Search) {
+      "esri/widgets/Search",
+      "esri/widgets/Editor"
+    ], function(esriConfig, Map, MapView, Graphic, GraphicsLayer, FeatureLayer, BasemapGallery, Locate, Search, Editor) {
       esriConfig.apiKey = "AAPTxy8BH1VEsoebNVZXo8HurO1yiQQh2vI3Qn8Db6q-7q35-Hk6vmdl5LFx-iA8OfHSzZWBPs9euPbIhU5mwGtGu2wHKcRhyRWhGF44mIJ_lf_SrxboCfkH2WJqMHNpKZT3GVEnXbMPbSXoCcWqZpu_ZfdMM9i27ua5v7c7xozIIBKWAZM105ZvIe0ebxu0uH_sOcseVuR5TdvN6Kh3KPkDc28Vj4ZcaSnqOAJuVTOXXfvUPrSXS7YeGqlkcCYMf1lrAT1_u49WXajV";
       
       const map = new Map({
@@ -216,6 +217,29 @@
       });
 
       map.add(featureLayer2);
+
+      const myAirports = new FeatureLayer({
+        url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/My_Airports_Lab3/FeatureServer",
+        outFields: ["AirportCode"],
+
+      });
+
+        //adding the feature layer to the map
+        map.add(myAirports);
+
+      // Set the point layer's LayerInfo
+      const pointInfos = {
+        layer: myAirports
+      };
+
+      // Begin Editor constructor
+      const editor = new Editor({
+        view: view,
+        layerInfos: [pointInfos]
+      }); // End Editor constructor
+
+      // Add the widget to the view
+      view.ui.add(editor, "top-right");  
 
       // Basemap Gallery Widget
       let basemapGallery = new BasemapGallery({
