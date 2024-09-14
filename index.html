@@ -140,13 +140,13 @@
       graphicsLayer.add(polygonGraphic);
 
       const popupStreams = {
-        "title": "STREAMs",
-        "content": "<b>USGS:</b> {USGS}<br>"
+        "title": "Streams",
+        "content": "<b>NAME:</b> {NAME}<br><b>STREAM LEVEL:</b> {STRM_LEVEL}<br>"
       };
       
       const streamsLayer = new FeatureLayer({
-        url: "https://services1.arcgis.com/RKHOEYhbKFt1KpD3/arcgis/rest/services/Illinois_Streams/FeatureServer",
-        outFields: ["USGS"],
+        url: "https://services.arcgis.com/P3ePLMYs2RVChkJx/arcgis/rest/services/USA_Detailed_Streams/FeatureServer",
+        outFields: ["NAME", "STRM_LEVEL"],
         popupTemplate: popupStreams
       });
       
