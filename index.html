@@ -168,11 +168,22 @@
         content: "<b>Name:</b> {Fac_Name}<b>City:</b> {City}"
       };
 
+      const AeroRenderer = {
+        "type": "simple",
+        "symbol": {
+          "type": "picture-marker",
+          "url": "https://github.com/ksoltyd/AGOL/blob/main/local_airport_24dp_5F6368.png",
+          "width": "18px",
+          "height": "18px"
+        }
+      };
+      
       const featureLayerUrl2 = "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/US_Airports_lab2_kbsoltys/FeatureServer";
 
       const featureLayer2 = new FeatureLayer({
         url: featureLayerUrl2,
-        outFields: ["Fac_Name","City"],
+        renderer: AeroRenderer
+        outFields: ["Fac_Name", "City"],
         popupTemplate: popupAero
       });
 
