@@ -218,10 +218,39 @@
 
       map.add(featureLayer2);
 
+      // Third FeatureLayer
+      const MyAirportLabels = {
+        symbol: {
+          type: "text",
+          color: "#FFFFFF",
+          font: {
+            size: "12px",
+            family: "Noto Sans",
+            style: "italic",
+            weight: "normal"
+          }
+        },
+        labelPlacement: "above-center",
+        labelExpressionInfo: {
+          expression: "$feature.AirportCode"
+        }
+      };
+
+      const MyAirportRenderer = {
+        "type": "simple",
+        "symbol": {
+          "type": "picture-marker",
+          "url": "location_on_24dp_5F6368.png",
+          "width": "18px",
+          "height": "18px"
+        }
+      }
+
       const myAirports = new FeatureLayer({
         url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/My_Airports_Lab3/FeatureServer",
         outFields: ["AirportCode"],
-
+        labelingInfo: [MyAirportLabels],
+        renderer: MyAirportRenderer
       });
 
         //adding the feature layer to the map
@@ -232,13 +261,11 @@
         layer: myAirports
       };
 
-      // Begin Editor constructor
+      // Editor Widget
       const editor = new Editor({
         view: view,
         layerInfos: [pointInfos]
-      }); // End Editor constructor
-
-      // Add the widget to the view
+      }); 
       view.ui.add(editor, "top-right");  
 
       // Basemap Gallery Widget
@@ -246,7 +273,6 @@
         view: view,
         container: 'basemapGalleryContainer'
       });
-
       view.ui.add(basemapGallery, {
         position: "bottom-left"
       });
@@ -255,7 +281,6 @@
       let locate = new Locate({
         view: view
       });
-
       view.ui.add(locate, {
         position: "top-left", 
         index: 1 
@@ -281,7 +306,7 @@
       width: 100%;
     }
 
-    #basemapGalleryContainer {
+    #basemapGalleryContainer { // Make the Basemap Smaller
       width: 100px; 
       height: auto; 
       background: white; 
