@@ -148,7 +148,8 @@
       map.add(featureLayer);
 
       let basemapGallery = new BasemapGallery({
-        view: view
+        view: view,
+        container: 'basemapGalleryContainer'
       });
 
       view.ui.add(basemapGallery, {
@@ -160,11 +161,10 @@
       });
 
       view.ui.add(locate, {
-        position: "bottom-right", 
-        index: 0 
+        position: "top-left", 
+        index: 1 
       });
       
-      // Log to confirm widgets creation
       console.log("BasemapGallery and Locate widgets added.");
 
       const searchWidget = new Search({
@@ -184,6 +184,13 @@
       margin: 0;
       height: 100%;
       width: 100%;
+    }
+
+    #basemapGalleryContainer {
+      width: 100px; 
+      height: auto; 
+      background: white; 
+      overflow: hidden
     }
   </style>
 </head>
