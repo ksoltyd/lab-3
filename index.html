@@ -139,10 +139,18 @@
 
       graphicsLayer.add(polygonGraphic);
 
-      const usaeduLayer = new FeatureLayer({
-      url: "https://services1.arcgis.com/RKHOEYhbKFt1KpD3/arcgis/rest/services/Illinois_Streams/FeatureServer"
+      const popupStreams = {
+        "title": "STREAMs",
+        "content": "<b>USGS:</b> {USGS}<br>"
+      }
+      
+      const streamsLayer = new FeatureLayer({
+        url: "https://services1.arcgis.com/RKHOEYhbKFt1KpD3/arcgis/rest/services/Illinois_Streams/FeatureServer"
+        outFields: ["USGS"],
+        popupTemplate: popupStreams
       });
-      map.add(usaeduLayer);
+      
+      map.add(streamsLayer);
 
       let basemapGallery = new BasemapGallery({
         view: view
